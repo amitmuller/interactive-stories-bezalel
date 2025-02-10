@@ -2,14 +2,14 @@ import { SETTINGS } from '../settings';
 import { responseSchema } from './response-schema';
 
 type Message = {
-    role: 'system' | 'assistant' | 'user'
-    content: string
-}
+    role: 'system' | 'assistant' | 'user';
+    content: string;
+};
 
 type ResultObject = {
-    response?: object
-    error?: string
-}
+    response?: object;
+    error?: string;
+};
 
 export function postMessages(
     messages: Message[],
@@ -22,7 +22,7 @@ export function postMessages(
         },
         body: JSON.stringify({
             responseSchema: responseSchema,
-            messages
+            messages,
         }),
     })
         .then((res) => {
@@ -36,10 +36,9 @@ export function postMessages(
                 const responseStr = data.choices[0].message.content;
                 const response = JSON.parse(responseStr);
                 onResponse({ response });
-            } catch {
-                (err: string) => {
-                    throw err;
-                };
+            } catch (err) {
+                console.error('Parsing error: ', err);
+                onResponse({ error: err as string });
             }
         })
         .catch((err) => {

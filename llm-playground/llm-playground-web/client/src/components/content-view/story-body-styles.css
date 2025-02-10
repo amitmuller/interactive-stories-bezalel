@@ -15,7 +15,7 @@
 }
 
 .message-assistant {
-    color: #666;
+    color: #fffafa;
     font-family: 'EB Garamond', 'David Libre', serif;
     font-weight: 400;
     font-size-adjust: 0.5;
@@ -24,7 +24,7 @@
 .message-user {
     font-family: 'Inter', 'Noto Sans Hebrew', sans-serif;
     font-optical-sizing: auto;
-    color: #191d34;
+    color: #34ac5e;
 }
 
 @media only screen and (max-width: 800px) {
